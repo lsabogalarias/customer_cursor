@@ -1,8 +1,11 @@
 :root {
   color: #1c2430;
-  background: #f3f0e8;
+  background: #ffffff;
   font-family: "Avenir Next", "Segoe UI", sans-serif;
   line-height: 1.45;
+  --harbor: #12324a;
+  --harbor-soft: #e6eef5;
+  --line: #d5e0ea;
 }
 
 * { box-sizing: border-box; }
@@ -11,34 +14,54 @@ body { margin: 0; }
 
 h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; line-height: 1.15; margin: 0 0 0.4rem; }
 
-a { color: #0f4c3a; }
+a { color: var(--harbor); }
 
 button, input, textarea, select { font: inherit; }
 
-.public { min-height: 100vh; }
+.public { min-height: 100vh; background: #ffffff; }
 
-.public-bar, .hero, .auth-card { width: min(960px, calc(100% - 2rem)); margin: 0 auto; }
+.landing {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(115deg, #ffffff 0%, #eef4f8 36%, #7ea3bf 68%, var(--harbor) 100%);
+}
+
+.landing::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 50%;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.28) 14%, rgba(18, 50, 74, 0.12) 100%),
+    url("/hero-home-vehicle.jpg") center right / cover no-repeat;
+  pointer-events: none;
+}
+
+.public-bar, .hero, .auth-card { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
 
 .public-bar { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 0; }
 
-.brand { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: #12324a; }
+.brand { font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--harbor); }
 
 .brand-sub, .eyebrow, .demo-note, .muted, .signed-in { color: #5c6b78; }
 
 .eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.75rem; margin: 0; }
 
-.hero { padding: 4rem 0 6rem; }
+.hero { position: relative; z-index: 1; padding: 5.5rem 0 6rem; }
+
+.public-bar { position: relative; z-index: 1; }
+
+.hero-copy { max-width: 34rem; }
 
 .hero h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); max-width: 14ch; }
 
 .lede { max-width: 42rem; font-size: 1.15rem; }
 
 .auth-card, .card {
-  background: #fffdf8;
-  border: 1px solid #e2d8c8;
+  background: #ffffff;
+  border: 1px solid var(--line);
   border-radius: 16px;
   padding: 1.25rem;
-  box-shadow: 0 10px 30px rgba(18, 50, 74, 0.05);
+  box-shadow: 0 10px 30px rgba(18, 50, 74, 0.06);
 }
 
 .auth-card { margin-top: 8vh; display: grid; gap: 0.8rem; max-width: 420px; }
@@ -46,7 +69,7 @@ button, input, textarea, select { font: inherit; }
 label { display: grid; gap: 0.3rem; font-size: 0.92rem; }
 
 input, textarea, select {
-  border: 1px solid #cfc3b0;
+  border: 1px solid var(--line);
   border-radius: 10px;
   padding: 0.65rem 0.75rem;
   background: white;
@@ -67,18 +90,18 @@ textarea { min-height: 6rem; }
 
 .btn:disabled { opacity: 0.6; cursor: wait; }
 
-.btn-primary { background: #0f4c3a; color: white; }
+.btn-primary { background: var(--harbor); color: white; }
 
-.btn-secondary, .btn-ghost { background: transparent; border-color: #0f4c3a; color: #0f4c3a; }
+.btn-secondary, .btn-ghost { background: #ffffff; border-color: var(--harbor); color: var(--harbor); }
 
-.sidebar .btn-ghost { border-color: rgba(255, 255, 255, 0.4); color: white; }
+.sidebar .btn-ghost { background: transparent; border-color: rgba(255, 255, 255, 0.4); color: white; }
 
-.text-button { background: none; border: 0; color: #0f4c3a; padding: 0; cursor: pointer; text-align: left; }
+.text-button { background: none; border: 0; color: var(--harbor); padding: 0; cursor: pointer; text-align: left; }
 
 .shell { min-height: 100vh; display: grid; grid-template-columns: 240px 1fr; }
 
 .sidebar {
-  background: #12324a;
+  background: var(--harbor);
   color: white;
   padding: 1.4rem 1rem;
   display: flex;
@@ -126,13 +149,13 @@ dd { margin: 0; font-weight: 600; }
 
 .actions { flex-wrap: wrap; justify-content: flex-start; }
 
-.pill { border-radius: 999px; padding: 0.2rem 0.65rem; font-size: 0.8rem; background: #e7f3ee; color: #0f4c3a; }
+.pill { border-radius: 999px; padding: 0.2rem 0.65rem; font-size: 0.8rem; background: var(--harbor-soft); color: var(--harbor); }
 
 .pill-renewal_requested { background: #fff1d6; color: #8a5a00; }
 
 .banner { padding: 0.75rem 0.9rem; border-radius: 10px; }
 
-.banner-ok { background: #e7f3ee; }
+.banner-ok { background: var(--harbor-soft); color: var(--harbor); }
 
 .banner-error { background: #fde8e4; color: #8d2b1f; }
 
@@ -140,11 +163,11 @@ dd { margin: 0; font-weight: 600; }
 
 .doc-list, .plain-list { list-style: none; padding: 0; margin: 0.8rem 0 0; display: grid; gap: 0.55rem; }
 
-.table-wrap { overflow-x: auto; background: #fffdf8; border-radius: 16px; border: 1px solid #e2d8c8; }
+.table-wrap { overflow-x: auto; background: #ffffff; border-radius: 16px; border: 1px solid var(--line); }
 
 table { width: 100%; border-collapse: collapse; }
 
-th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid #efe6d8; }
+th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid var(--line); }
 
 .stack-form { display: grid; gap: 0.7rem; margin-top: 0.8rem; }
 
@@ -162,6 +185,15 @@ th, td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid #efe6
 .loading { padding: 2rem; }
 
 @media (max-width: 800px) {
+  .landing::before {
+    inset: 52% 0 0 0;
+    background:
+      linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.35) 18%, rgba(18, 50, 74, 0.08) 100%),
+      url("/hero-home-vehicle.jpg") center / cover no-repeat;
+  }
+
+  .landing .hero { padding-bottom: 16rem; }
+
   .shell { grid-template-columns: 1fr; }
   .sidebar { position: sticky; top: 0; z-index: 2; }
   .menu { grid-auto-flow: column; overflow-x: auto; }
