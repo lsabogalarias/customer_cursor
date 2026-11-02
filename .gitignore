@@ -1,5 +1,6 @@
 .venv/
 venv/
+*.egg-info/
 __pycache__/
 *.py[cod]
 .mypy_cache/
@@ -8,6 +9,7 @@ __pycache__/
 *.db
 data/
 .env
+.run/
 node_modules/
 dist/
 .DS_Store
